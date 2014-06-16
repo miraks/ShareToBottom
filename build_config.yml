@@ -1,0 +1,14 @@
+---
+:name: sharetobottom
+:files:
+  - bootstrap.coffee
+  - bootstrap.js
+  - chrome.manifest
+  - icon.png
+  - icon64.png
+  - install.rdf
+:folders: []
+:compile:
+  - bootstrap.coffee
+:push_to_device: true
+:app_id: org.mozilla.firefox

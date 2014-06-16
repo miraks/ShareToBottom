@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+    <Description about="urn:mozilla:install-manifest">
+        <em:id>sharetobottom@vldkn.net</em:id>
+        <em:type>2</em:type>
+        <em:name>Share to Bottom</em:name>
+        <em:version>0.1.0</em:version>
+        <em:bootstrap>true</em:bootstrap>
+        <em:description>Move 'Share Link' button to bottom of context menu</em:description>
+        <em:creator>Miraks</em:creator>
+        <em:optionsURL>chrome://sharetobottom/content/settings.xul</em:optionsURL>
+
+        <em:localized>
+            <Description>
+                <em:locale>ru-RU</em:locale>
+                <em:name>Share to Bottom</em:name>
+                <em:description>Переносит кнопку 'Поделиться ссылкой' вниз контекстного меню</em:description>
+                <em:creator>Miraks</em:creator>
+            </Description>
+        </em:localized>
+
+        <!-- Firefox for Android -->
+        <em:targetApplication>
+            <Description>
+                <em:id>{aa3c5121-dab2-40e2-81ca-7ea25febc110}</em:id>
+                <em:minVersion>25.0</em:minVersion>
+                <em:maxVersion>33.0</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+    </Description>
+</RDF>
