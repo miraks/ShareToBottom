@@ -9,7 +9,7 @@
         <em:name>Share to Bottom</em:name>
         <em:version>0.1.0</em:version>
         <em:bootstrap>true</em:bootstrap>
-        <em:description>Move 'Share Link' button to bottom of context menu</em:description>
+        <em:description>Move 'Share Link' button to the bottom of context menu</em:description>
         <em:creator>Miraks</em:creator>
         <em:optionsURL>chrome://sharetobottom/content/settings.xul</em:optionsURL>
 
