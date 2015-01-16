@@ -5,33 +5,39 @@ const Cu = Components.utils;`
 Cu.import "resource://gre/modules/Services.jsm"
 
 
-ShareToBottom =
-  _shareLabel: Services.strings.createBundle('chrome://browser/locale/browser.properties').GetStringFromName('contextmenu.shareLink')
+ShareToBottom = do ->
+  bundle = Services.strings.createBundle('chrome://browser/locale/browser.properties')
+  shareLabelTypes = ['share', 'shareLink', 'shareEmailAddress', 'sharePhoneNumber', 'shareImage', 'shareMedia']
+  shareLabels = for type in shareLabelTypes
+    bundle.GetStringFromName "contextmenu.#{type}"
+
+  getMenuItems = (aWindow) ->
+    aWindow.NativeWindow.contextmenus.items
 
   load: (aWindow) ->
     return unless aWindow
 
-    shareId = null
-    menuItems = @_getMenuItems aWindow
+    ids = []
+    menuItems = getMenuItems aWindow
 
     for id, data of menuItems
-      shareId = id if data.args.label == @_shareLabel
+      {label} = data.args
+      label = label() if typeof label == 'function'
+      ids.push id if label in shareLabels
 
-    return unless shareId?
+    return unless ids.length > 0
 
-    args = menuItems[shareId].args
-    args.oldOrder = args.order
-    args.order = 999
+    for id in ids
+      {args} = menuItems[id]
+      args._prevOrder = args.order
+      args.order = 999
 
   unload: (aWindow) ->
     return unless aWindow
 
-    for id, data of @_getMenuItems aWindow
-      args = data.args
-      args.order = args.oldOrder if args.oldOrder?
-
-  _getMenuItems: (aWindow) ->
-    aWindow.NativeWindow.contextmenus.items
+    for id, data of getMenuItems aWindow
+      {args} = data
+      args.order = args._prevOrder if args._prevOrder?
 
 
 install = ->
