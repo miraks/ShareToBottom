@@ -7,7 +7,7 @@
         <em:id>sharetobottom@vldkn.net</em:id>
         <em:type>2</em:type>
         <em:name>Share to Bottom</em:name>
-        <em:version>0.1.0</em:version>
+        <em:version>0.2.0</em:version>
         <em:bootstrap>true</em:bootstrap>
         <em:description>Move 'Share Link' button to the bottom of context menu</em:description>
         <em:creator>Miraks</em:creator>
