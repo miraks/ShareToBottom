@@ -20,6 +20,10 @@ ShareToBottom = do ->
     ids = []
     menuItems = getMenuItems aWindow
 
+    # Since FF41 UIReady fired right before context menu initialization
+    if Object.keys(menuItems).length == 0
+      return aWindow.setTimeout (-> ShareToBottom.load aWindow), 1
+
     for id, data of menuItems
       {label} = data.args
       label = label() if typeof label == 'function'
